@@ -5,5 +5,5 @@ $(document).ready(function(){
 function editLink(event){
   event.preventDefault()
   var linkid = $(this).parent().parent().data('id')
-  window.location = "/links/edit/" + linkid
+  window.location = "/links/" + linkid + '/edit'
 }
