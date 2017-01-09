@@ -30,6 +30,13 @@
   <% end %>
 </div>
 
+<h2>Filters</h2>
+<label>By Text:</label>
+<input id='filter-text' type="text" name="filter-text" value="">
+<button type="button" id='filter-unread' name="filter-unread">Only Unread</button>
+<button type="button" id='filter-read' name="filter-read">Only Read</button>
+
+
 <h2>Hot Reads!</h2>
 <ol id="hot-reads">
 <% @hot_links.each do |read| %>
