@@ -9,7 +9,7 @@ $(document).ready(function(){
 
 function createLink (event){
   event.preventDefault();
-  
+
   var link = getLinkData();
 
   $.post("/api/v1/links", link)
@@ -27,6 +27,7 @@ function getLinkData() {
 
 function renderLink(link){
   $("#links-list").append( linkHTML(link) )
+  
   // clearLink();
 }
 
