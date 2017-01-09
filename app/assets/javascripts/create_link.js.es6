@@ -27,8 +27,7 @@ function getLinkData() {
 
 function renderLink(link){
   $("#links-list").append( linkHTML(link) )
-  
-  // clearLink();
+  $(`*[data-id=${link.id}]`).find('.edit-link').on('click', editLink )
 }
 
 function linkHTML(link) {

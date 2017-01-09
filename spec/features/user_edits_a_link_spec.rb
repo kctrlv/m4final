@@ -10,10 +10,8 @@ RSpec.describe "User creates links", :js => :true do
     fill_in "link-title", :with => "Turing"
     fill_in "link-url", :with => "http://turing.io"
     click_button "Add Link"
-
     click_button "Edit"
     expect(page).to have_content("Edit Link")
-    expect(page).to have_content("Turing")
   end
 
 end
