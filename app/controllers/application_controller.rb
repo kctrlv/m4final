@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to "/join" unless @current_user
+    redirect_to "/join" unless current_user
   end
 end
