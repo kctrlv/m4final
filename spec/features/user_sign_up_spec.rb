@@ -83,4 +83,17 @@ RSpec.feature "User Sign Up, Login, Logout", :type => :feature do
     expect(current_path).to eq(login_path)
     expect(page).to have_content("User does not exist")
   end
+
+  scenario "User can logout and is taken back to join page" do
+    User.create!(email: 'nancy@james.com', password: '1234')
+    visit '/'
+    click_link "Login"
+    fill_in "email", with: "nancy@james.com"
+    fill_in "password", with: "1234"
+    click_button "Submit"
+    expect(current_path).to eq(links_path)
+    click_link "Sign Out"
+    expect(current_path).to eq('/join')
+  end
+
 end
