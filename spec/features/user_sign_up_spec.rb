@@ -62,16 +62,25 @@ RSpec.feature "User Sign Up, Login, Logout", :type => :feature do
     expect(current_path).to eq(links_path)
     expect(page).to have_content("You have logged in!")
   end
-  #
-  # scenario "User can logout" do
-  #   User.create(email: 'joe@example.com', password: '1234')
-  #   visit '/'
-  #   click_link "Login"
-  #   fill_in "Email", with: "joe@example.com"
-  #   fill_in "Password", with: "1234"
-  #   fill_in "Password confirmation", with: "1234"
-  #   click_button "Login"
-  #   click_link "Sign Out"
-  #   expect(current_path).to eq("/join")
-  # end
+
+  scenario "User can't login without correct password" do
+    User.create!(email: 'nancy@james.com', password: '1234')
+    visit '/'
+    click_link "Login"
+    fill_in "email", with: "nancy@james.com"
+    fill_in "password", with: "4321"
+    click_button "Submit"
+    expect(current_path).to eq(login_path)
+    expect(page).to have_content("Incorrect password")
+  end
+
+  scenario "User can't login when user doesn't exist" do
+    visit '/'
+    click_link "Login"
+    fill_in "email", with: "nancy@james.com"
+    fill_in "password", with: "4321"
+    click_button "Submit"
+    expect(current_path).to eq(login_path)
+    expect(page).to have_content("User does not exist")
+  end
 end

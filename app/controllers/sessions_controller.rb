@@ -9,6 +9,11 @@ class SessionsController < ApplicationController
       flash[:notice] = "You have logged in!"
       redirect_to links_path
     else
+      if @user
+        flash[:error] = 'Incorrect password' unless @user.authenticate(params[:password])
+      else
+        flash[:error] = 'User does not exist'
+      end
       redirect_to login_path
     end
   end
