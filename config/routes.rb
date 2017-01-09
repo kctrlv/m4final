@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  root to: "links#index"
+  root to: redirect("/join")
 
   resources :links, only: [:index]
+
+  get '/join' => 'welcome#index'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
