@@ -22,7 +22,8 @@ function createLink (event){
 function getLinkData() {
  return {
    title: $newLinkTitle.val(),
-   url: $newLinkUrl.val()
+   url: $newLinkUrl.val(),
+   user_id: $('a').attr('id')
  }
 }
 
