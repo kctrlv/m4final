@@ -6,12 +6,12 @@ RSpec.describe "User marks links as read", :js => :true do
     login_as_bob
   end
 
-  scenario "user marks a link as read" do
+  scenario "user marks a link as read and it changes its button" do
     fill_in "link-title", :with => "Turing"
     fill_in "link-url", :with => "http://turing.io"
     click_button "Add Link"
     click_button "Mark as Read"
-    expect(page).to have_content("Edit Link")
+    expect(page).to have_content("Mark Unread")
   end
 
 end

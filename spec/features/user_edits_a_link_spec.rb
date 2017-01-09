@@ -6,7 +6,7 @@ RSpec.describe "User creates links", :js => :true do
     login_as_bob
   end
 
-  scenario "user creates a new link and sees it" do
+  scenario "user creates a new link and goes to edit it" do
     fill_in "link-title", :with => "Turing"
     fill_in "link-url", :with => "http://turing.io"
     click_button "Add Link"
