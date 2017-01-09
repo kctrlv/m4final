@@ -60,6 +60,7 @@ RSpec.feature "User Sign Up, Login, Logout", :type => :feature do
     fill_in "password", with: "1234"
     click_button "Submit"
     expect(current_path).to eq(links_path)
+    expect(page).to have_content("You have logged in!")
   end
   #
   # scenario "User can logout" do
