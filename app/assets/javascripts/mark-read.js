@@ -7,6 +7,7 @@ $(document).ready(function(){
     button.removeClass('mark-read')
     button.addClass('mark-unread')
     button.html("Mark Unread")
+    button.parent().parent().find('.link_read').text("Read?: true")
   }
 
   function updateLinkToUnread(event) {
@@ -15,6 +16,7 @@ $(document).ready(function(){
     button.removeClass('mark-unread')
     button.addClass('mark-read')
     button.html("Mark as Read")
+    button.parent().parent().find('.link_read').text("Read?: false")
   }
 
   $('#links-list').on('click', 'button.mark-read', function(){
