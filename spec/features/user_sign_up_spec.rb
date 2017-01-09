@@ -29,6 +29,17 @@ RSpec.feature "User Sign Up, Login, Logout", :type => :feature do
     expect(page).to have_content("Email can't be blank")
   end
 
+  scenario "Visitor cannot signup already taken email" do
+    User.create!(email: "nancy@james.com", password: '1234')
+    visit '/'
+    click_link "Sign Up"
+    fill_in "user_email", with: "nancy@james.com"
+    fill_in "user_password", with: "1234"
+    fill_in "user_password_confirmation", with: "1234"
+    click_button "Submit"
+    expect(current_path).to eq(signup_path)
+    expect(page).to have_content("Email has already been taken")
+  end
 
   scenario "Visitor cannot signup if password confirmation doesn't match" do
     visit '/'
@@ -40,17 +51,16 @@ RSpec.feature "User Sign Up, Login, Logout", :type => :feature do
     expect(current_path).to eq(signup_path)
     expect(page).to have_content("Password confirmation doesn't match Password")
   end
-  #
-  # scenario "User can login" do
-  #   User.create(email: 'joe@example.com', password: '1234')
-  #   visit '/'
-  #   click_link "Login"
-  #   fill_in "Email", with: "joe@example.com"
-  #   fill_in "Password", with: "1234"
-  #   fill_in "Password confirmation", with: "1234"
-  #   click_button "Login"
-  #   expect(current_path).to eq(links_path)
-  # end
+
+  scenario "User can login" do
+    User.create!(email: 'nancy@james.com', password: '1234')
+    visit '/'
+    click_link "Login"
+    fill_in "email", with: "nancy@james.com"
+    fill_in "password", with: "1234"
+    click_button "Submit"
+    expect(current_path).to eq(links_path)
+  end
   #
   # scenario "User can logout" do
   #   User.create(email: 'joe@example.com', password: '1234')
