@@ -19,15 +19,15 @@ RSpec.feature "User Sign Up, Login, Logout", :type => :feature do
     expect(current_path).to eq(links_path)
   end
 
-  # scenario "Visitor cannot signup without email" do
-  #   visit '/'
-  #   click_link "Sign Up"
-  #   fill_in "Password", with: "1234"
-  #   fill_in "Password confirmation", with: "1234"
-  #   click_button "Sign Up"
-  #   expect(page).to have_content("Email can't be blank")
-  #   expect(current_path).to eq("/join")
-  # end
+  scenario "Visitor cannot signup without email" do
+    visit '/'
+    click_link "Sign Up"
+    fill_in "user_password", with: "1234"
+    fill_in "user_password_confirmation", with: "1234"
+    click_button "Submit"
+    expect(current_path).to eq(signup_path)
+    expect(page).to have_content("Email can't be blank")
+  end
   #
   #
   # scenario "Visitor cannot signup if password confirmation doesn't match" do
