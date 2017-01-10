@@ -1,5 +1,7 @@
 $(document).ready(function(){
   $('#filter-text').on('keyup', filterText)
+  $('#filter-unread').on('click', filterUnread)
+  $('#filter-read').on('click', filterRead)
 });
 
 function filterText(event) {
@@ -13,6 +15,12 @@ function filterText(event) {
       $(this).hide()
     }
   })
-  console.log('trying to filter')
-  // $('#link:not(:contains(filter))').hide()
+}
+
+function filterUnread(event) {
+  console.log('trying to show only unread')
+}
+
+function filterRead(event) {
+  console.log('trying to show only read')
 }
