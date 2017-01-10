@@ -19,8 +19,25 @@ function filterText(event) {
 
 function filterUnread(event) {
   console.log('trying to show only unread')
+  $("#links-list").children().each(function() {
+    var read = $(this).find('.link_read').text().split(": ")[1].substring(0,4)
+    if(read == 'fals') {
+      $(this).show()
+    } else {
+      $(this).hide()
+    }
+  })
 }
 
 function filterRead(event) {
   console.log('trying to show only read')
+  $("#links-list").children().each(function() {
+    var read = $(this).find('.link_read').text().split(": ")[1].substring(0,4)
+    if(read == 'true') {
+      $(this).show()
+    } else {
+      $(this).hide()
+    }
+  })
+
 }
